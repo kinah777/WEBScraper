@@ -39,10 +39,12 @@ Instead of parsing the webpage directly, it uses Starlink’s internal API to re
 1. First what I did was copy the annotated cURL from inspecting the webpage
 - Used Chrome DevTools/Network tab/found the Annotated window/“Copy as cURL” to capture the exact request the browser sends to Starlink, including the URL, cookies, and headers.
 
-2. We used the cURL data to recreate the request in Python using "curlconverter.com" and also the requests library, including authentication cookies yum-yumm.
+2. Used the cURL data to recreate the request in Python using "curlconverter.com" and also the requests library, including authentication cookies yum-yumm.
+- This was not easy to acquire but it will flag the program when ran as an "authenticated_user_required" if the cookies are not acquired.
+- Acquire cookies in inspect MUI/Applications/Cookies/http://starlink.com/Starlink.Com.Access.V1/ then BAM the cookies!
 
-3. The Python script is calling out Starlink’s internal API endpoint that returns usage data in JSON format to parse it.
+3. Run the py file "Bolante_WEBScrape.py" that will call out Starlink’s internal API endpoint that returns usage data in JSON format to parse it.
 
-4. Parsed and Extracted JSON format: Billing cycles, Start dates, Daily usage values, then mapped each usage value to the correct date.
+4. Feeding it the Parsed and Extracted JSON format: Billing cycles, Start dates, Daily usage values, then mapped each usage value to the correct date.
 
-5. Exported them to CSV as output - TA-DA 
+5. The auto-exports them to CSV as output - TA-DA 
